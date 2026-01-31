@@ -1,0 +1,266 @@
+﻿using Android.App;
+using Android.OS;
+using Android.Runtime;
+using AndroidX.AppCompat.App;
+using Android.Support.V7.Widget;
+using Android.Support.V7;
+using Android.Content;
+using Android.Views;
+using Android.Widget;
+using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Android.Content.Res;
+using Android.Graphics;
+using System.IO;
+using Android.Graphics.Drawables;
+using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Contexts;
+using Kotlin.Ranges;
+using Android.Support.V13.View;
+using Android.Icu.Text;
+using Android.Views.Animations;
+using Android.Media;
+using Android.Renderscripts;
+using System.Threading;
+
+namespace Rumblebash.TomBareket
+{
+    [Activity(Label = "Rumblebash", Theme = "@style/AppTheme", MainLauncher = true)]
+    public class MainActivity : AppCompatActivity
+    {
+        //Variables for the start menu
+        public ImageView ivTitle;
+        public Button btnStart, btnOptions, btnHigh;
+        public static Animation aJumpTitle;
+        public static RelativeLayout rlMainMenu;
+
+        //Variables regarding the settings menu
+        public LayoutInflater liInflateSettings;
+        public static ISharedPreferences sp;
+
+
+        //MainActivity statics, used consistantly in the card manager
+        public static MainActivity main;
+        public static Android.Content.Context context;
+        
+
+        //Recycler View variables
+        public static List<Card> cardPile;
+        public static RecyclerView rvDeck;
+        public static CardAdapter cAdapter;
+        
+        //SlotView related variables (And the combat button lol)
+        public static SlotView[,] svCardSlot = svCardSlot = new SlotView[2, 3];
+        public static TextView[,] tvMonsterStat = new TextView[6,2];
+        public static ImageView ivCombatButton;
+
+        //Combat related statistics
+        public static bool isInCombat = false;
+        public static int kills = 0;
+
+        //Statistics about the board, as well as settings and internal variables of the board
+        public static Dictionary<string, int> portaitIdLibrary;
+        public static Typeface nameFont, abilityFont, statsFont;
+        public MediaPlayer mpFightTheme;
+        public static TextView tvCountDown;
+        public static RelativeLayout rlParentLayout;
+
+
+        protected override async void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.activity_start);
+            RequestedOrientation = Android.Content.PM.ScreenOrientation.Portrait;
+            main = this;
+            nameFont = Typeface.CreateFromAsset(Assets, "CardNameFont.TTF");
+            abilityFont = Typeface.CreateFromAsset(Assets, "CardAbilityFont.ttf");
+            statsFont = Typeface.CreateFromAsset(Assets, "CardStatsFont.ttf");
+
+
+            rlParentLayout = FindViewById<RelativeLayout>(Resource.Id.rlGameMenu);
+
+            portaitIdLibrary = new Dictionary<string, int>();
+            portaitIdLibrary.Add("defaultportrait", Resource.Drawable.defaultportrait);
+            portaitIdLibrary.Add("GoblinPortrait", Resource.Drawable.GoblinPortrait);
+            portaitIdLibrary.Add("BansheePortrait", Resource.Drawable.BansheePortrait);
+            portaitIdLibrary.Add("GolemPortrait", Resource.Drawable.GolemPortrait);
+            portaitIdLibrary.Add("VampirePortrait", Resource.Drawable.VampirePortrait);
+            portaitIdLibrary.Add("BonemerangPortrait", Resource.Drawable.BonemerangPortrait);
+            portaitIdLibrary.Add("WillOWispPortrait", Resource.Drawable.WillOWispPortrait);
+            portaitIdLibrary.Add("KappaPortrait", Resource.Drawable.KappaPortrait);
+            portaitIdLibrary.Add("MummylordPortrait", Resource.Drawable.MummylordPortrait);
+
+
+            rlMainMenu = FindViewById<RelativeLayout>(Resource.Id.rlStartMenu);
+            ivTitle = FindViewById<ImageView>(Resource.Id.ivGameTitle);
+            btnStart = FindViewById<Button>(Resource.Id.btnPlay);
+            btnOptions = FindViewById<Button>(Resource.Id.btnOptions);
+            aJumpTitle = AnimationUtils.LoadAnimation(this, Resource.Animation.anim_TitleJump);
+            ivTitle.StartAnimation(aJumpTitle);
+            btnStart.Click += LoadGameMenu;
+            btnOptions.Click += LoadSettingsMenu;
+
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            if(mpFightTheme != null) mpFightTheme.Pause();
+            Random randPickLine = new Random();
+            int choose = randPickLine.Next(1, 4);
+            MediaPlayer mpDevilLine = new MediaPlayer();
+            if(choose == 1) mpDevilLine = MediaPlayer.Create(this, Resource.Raw.DevilSound1);
+            else if (choose == 2) mpDevilLine = MediaPlayer.Create(this, Resource.Raw.DevilSound2);
+            else if (choose == 3) mpDevilLine = MediaPlayer.Create(this, Resource.Raw.DevilSound3);
+            mpDevilLine.Start();
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            if (mpFightTheme != null)  mpFightTheme.Start();
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
+
+        public void LoadGameMenu(object sender, EventArgs e)
+        {
+            SetContentView(Resource.Layout.activity_main);
+            rlParentLayout = FindViewById<RelativeLayout>(Resource.Id.rlGameMenu);
+            rvDeck = FindViewById<RecyclerView>(Resource.Id.rvCardDeck);
+            LinearLayoutManager lmCardManager = new LinearLayoutManager(this, LinearLayoutManager.Horizontal, false);
+            rvDeck.SetLayoutManager(lmCardManager);
+            cardPile = new List<Card>() { };
+            cAdapter = new CardAdapter(cardPile);
+            rvDeck.SetAdapter(cAdapter);
+            LoadCards(4);
+
+            LoadBoard();
+
+            ivCombatButton = FindViewById<ImageView>(Resource.Id.ivPlayButton);
+            ivCombatButton.Touch += ButtonPressed;
+
+            mpFightTheme = MediaPlayer.Create(this, Resource.Raw.FightTheme);
+            mpFightTheme.Looping = true;
+            mpFightTheme.Start();
+
+
+            tvCountDown = FindViewById<TextView>(Resource.Id.tvCountDown);
+            tvCountDown.Visibility = ViewStates.Gone;
+        }
+        public void LoadSettingsMenu(object sender, EventArgs e)
+        {
+            liInflateSettings = LayoutInflater.From(this);
+            View vSettings = liInflateSettings.Inflate(Resource.Layout.activity_options, null);
+            rlMainMenu.AddView(vSettings);
+            vSettings.StartAnimation(aJumpTitle);
+        }
+        public void LoadBoard()
+        {
+            svCardSlot[0, 0] = FindViewById<SlotView>(Resource.Id.svCardSlot11);
+            svCardSlot[0, 1] = FindViewById<SlotView>(Resource.Id.svCardSlot12);
+            svCardSlot[0, 2] = FindViewById<SlotView>(Resource.Id.svCardSlot13);
+            svCardSlot[1, 0] = FindViewById<SlotView>(Resource.Id.svCardSlot21);
+            svCardSlot[1, 1] = FindViewById<SlotView>(Resource.Id.svCardSlot22);
+            svCardSlot[1, 2] = FindViewById<SlotView>(Resource.Id.svCardSlot23);
+            for (int i = 0; i < 3; i++) svCardSlot[1, i].rotation = 1;
+            svCardSlot[0, 0].tvDisplayStats[0] = FindViewById<TextView>(Resource.Id.tvMonsterAT11);
+            svCardSlot[0, 0].tvDisplayStats[1] = FindViewById<TextView>(Resource.Id.tvMonsterHP11);
+            svCardSlot[0, 1].tvDisplayStats[0] = FindViewById<TextView>(Resource.Id.tvMonsterAT12);
+            svCardSlot[0, 1].tvDisplayStats[1] = FindViewById<TextView>(Resource.Id.tvMonsterHP12);
+            svCardSlot[0, 2].tvDisplayStats[0] = FindViewById<TextView>(Resource.Id.tvMonsterAT13);
+            svCardSlot[0, 2].tvDisplayStats[1] = FindViewById<TextView>(Resource.Id.tvMonsterHP13);
+            svCardSlot[1, 0].tvDisplayStats[0] = FindViewById<TextView>(Resource.Id.tvMonsterAT21);
+            svCardSlot[1, 0].tvDisplayStats[1] = FindViewById<TextView>(Resource.Id.tvMonsterHP21);
+            svCardSlot[1, 1].tvDisplayStats[0] = FindViewById<TextView>(Resource.Id.tvMonsterAT22);
+            svCardSlot[1, 1].tvDisplayStats[1] = FindViewById<TextView>(Resource.Id.tvMonsterHP22);
+            svCardSlot[1, 2].tvDisplayStats[0] = FindViewById<TextView>(Resource.Id.tvMonsterAT23);
+            svCardSlot[1, 2].tvDisplayStats[1] = FindViewById<TextView>(Resource.Id.tvMonsterHP23);
+            for (int i = 0; i < 2; i++) for (int j = 0; j < 3; j++) for (int k = 0; k < 2; k++)
+                    {
+                        svCardSlot[i, j].tvDisplayStats[k].Visibility = ViewStates.Invisible;
+                        svCardSlot[i, j].tvDisplayStats[k].Typeface = statsFont;
+                    }
+        }
+
+
+        //Functions handling the combat button, as well as intializing combat itself
+        private void ButtonPressed(object sender, View.TouchEventArgs e)
+        {
+            if (isInCombat) return;
+            switch (e.Event.Action)
+            {
+                case MotionEventActions.Down:
+                    ivCombatButton.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.PlayButtonPressed));
+                    if (SlotView.crosshair != null) rlParentLayout.RemoveView(SlotView.crosshair);
+                    if (SlotView.infoTab != null) rlParentLayout.RemoveView(SlotView.infoTab);
+                    break;
+                case MotionEventActions.Up:
+                    if (AllHaveTarget())
+                    {
+                        rlParentLayout.RemoveView(SlotView.crosshair);
+                        rlParentLayout.RemoveView(SlotView.infoTab);
+                        InitiateCombat();
+                    } else ivCombatButton.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.PlayButtonUnpressed));
+                    break;
+            }
+        }
+
+        public bool AllHaveTarget()
+        {
+            int nullCount = 0;
+            bool allHaveTarget = true;
+            for (int i = 0; i < 2; i++) for (int j = 0; j < 3; j++)
+                {
+                    if (svCardSlot[i, j].slotCard == null) nullCount++;
+                    else if (svCardSlot[i, j].targetSlot == null)
+                    {
+                        Animation animMissing = AnimationUtils.LoadAnimation(this, Resource.Animation.anim_textBounce);
+                        svCardSlot[i, j].StartAnimation(animMissing);
+                        allHaveTarget = false;
+                    }
+                }
+            if (nullCount != 6) return allHaveTarget; else return false;
+        }
+
+        public async Task InitiateCombat()
+        {
+            isInCombat = true;
+            for (int i = 0; i < 2; i++) for (int j = 0; j < 3; j++) if (svCardSlot[i,j].slotCard != null && svCardSlot[i,j].slotCard.cAT != 0) await svCardSlot[i, j].CardStrike();
+            LoadCards(3);
+            await CheckStartOfTurnAbilities();
+            isInCombat = false;
+            ivCombatButton.SetImageDrawable(Resources.GetDrawable(Resource.Drawable.PlayButtonUnpressed));
+        }
+
+        public static async Task CheckStartOfTurnAbilities()
+        {
+            for (int i = 0; i < 2; i++) for (int j = 0; j < 3; j++)
+                {
+                    SlotView toCheck = svCardSlot[i, j];
+                    if (toCheck != null && toCheck.slotCard != null && toCheck.slotCard.cAbility != null && toCheck.slotCard.cAbility.trigger == ActCondition.OnStartOfTurn) await toCheck.slotCard.cAbility.Activate(toCheck);
+                }
+                        
+        }
+
+        public static void LoadCards(int amount, Card[] content = null, int[] range = null)
+        {
+            if (content != null) for (int i = 0; i < content.Count(); i++) cardPile.Add(content[i]);
+            Random rand = new Random();
+            if (range != null) for (int i = 0; i < amount; i++) cardPile.Add(new Card(rand.Next(0, range.Length - 1)));
+            else for(int i = 0; i < amount; i++) cardPile.Add(new Card(rand.Next(0, 10)));
+            rvDeck.GetAdapter().NotifyDataSetChanged();
+        }
+    }
+}

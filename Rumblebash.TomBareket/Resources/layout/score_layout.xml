@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="390dp"
+    android:layout_height="60dp"
+    android:orientation="horizontal"
+    android:padding="5dp"
+    android:background="@drawable/infolayout">
+
+    <TextView
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:text="69"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:textSize="30dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tvScoreDisplay"
+    />
+
+    <TextView
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:text="Fred"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:layout_marginLeft="70dp"
+        android:textSize="25dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tvScorerNameDisplay"
+    />
+</LinearLayout>

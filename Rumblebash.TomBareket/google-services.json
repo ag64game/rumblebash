@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "644783897160",
+    "project_id": "rumblebashhighscores",
+    "storage_bucket": "rumblebashhighscores.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644783897160:android:0bdc38cd51bda64a64367d",
+        "android_client_info": {
+          "package_name": "com.geijaystudios.rumblebash"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGtCnMjlkFC7vlw0U2O1DmBN9iTbbsiZw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

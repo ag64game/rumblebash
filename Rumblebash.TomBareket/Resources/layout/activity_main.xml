@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_purple"
+    android:id="@+id/rlGameMenu"
+	>
+	
+    <Rumblebash.BackgroundScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:nestedScrollingEnabled="false"
+		android:id="@+id/svBgContainer">
+	        <LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="match_parent"
+				android:orientation="horizontal"
+				android:id="@+id/llBackground">
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:background="@drawable/background"
+					android:id="@+id/ivBackground1"
+		/>
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:background="@drawable/background"
+					android:id="@+id/ivBackground2"
+		/>
+	</LinearLayout>
+	</Rumblebash.BackgroundScrollView>
+	
+	<ImageView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@drawable/Foreground"
+		android:id="@+id/ivForeground"
+		/>
+
+	<android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rvCardDeck"
+        android:orientation="horizontal"
+    />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/SettingsButton"
+        android:id="@+id/ivSettingsMenu"
+        />
+
+    <Rumblebash.SlotView
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="205dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/SlotPortal"
+        android:id="@+id/svCardSlot11"
+    />
+    <RelativeLayout
+		android:layout_width="160dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="333.5dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center">
+		<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="25dp"
+            android:layout_alignParentLeft="true"
+            android:textColor="@android:color/white"
+            android:background="@drawable/IconATK"
+            android:id="@+id/tvMonsterAT11"
+        />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="0"
+			android:textSize="25dp"
+			
+			android:layout_centerInParent="true"
+			android:textColor="@android:color/white"
+			android:background="@drawable/IconSPD"
+			android:id="@+id/tvMonsterSP11"
+        />
+		
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="0"
+			android:textSize="25dp"
+			
+			android:layout_alignParentRight="true"
+			android:textColor="@android:color/white"
+			android:background="@drawable/IconHP"
+			android:id="@+id/tvMonsterHP11"
+        />
+	</RelativeLayout>
+
+
+    <Rumblebash.SlotView
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="380dp"
+        android:layout_marginLeft="20dp"
+        android:transformPivotX="72.5dp"
+        android:transformPivotY="72.5dp"
+        android:background="@drawable/SlotPortal"
+        android:id="@+id/svCardSlot12"
+    />
+	<RelativeLayout
+		android:layout_width="160dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="507.5dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center">
+		<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="25dp"
+            android:layout_alignParentLeft="true"
+            android:textColor="@android:color/white"
+            android:background="@drawable/IconATK"
+            android:id="@+id/tvMonsterAT12"
+        />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="0"
+			android:textSize="25dp"
+			
+			android:layout_centerInParent="true"
+			android:textColor="@android:color/white"
+			android:background="@drawable/IconSPD"
+			android:id="@+id/tvMonsterSP12"
+        />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="0"
+			android:textSize="25dp"
+			
+			android:layout_alignParentRight="true"
+			android:textColor="@android:color/white"
+			android:background="@drawable/IconHP"
+			android:id="@+id/tvMonsterHP12"
+        />
+	</RelativeLayout>
+
+
+    <Rumblebash.SlotView
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="555dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/SlotPortal" 
+        android:id="@+id/svCardSlot13"
+    />
+	<RelativeLayout
+		android:layout_width="160dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="684.5dp"
+        android:layout_marginLeft="15dp"
+        android:gravity="center">
+		<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="25dp"
+            android:layout_alignParentLeft="true"
+            android:textColor="@android:color/white"
+            android:background="@drawable/IconATK"
+            android:id="@+id/tvMonsterAT13"
+        />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="0"
+			android:textSize="25dp"
+			
+			android:layout_centerInParent="true"
+			android:textColor="@android:color/white"
+			android:background="@drawable/IconSPD"
+			android:id="@+id/tvMonsterSP13"
+        />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="0"
+			android:textSize="25dp"
+			
+			android:layout_alignParentRight="true"
+			android:textColor="@android:color/white"
+			android:background="@drawable/IconHP"
+			android:id="@+id/tvMonsterHP13"
+        />
+	</RelativeLayout>
+
+
+
+    <Rumblebash.SlotView
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="205dp"
+        android:layout_marginLeft="220dp"
+        android:background="@drawable/SlotPortal"
+        android:id="@+id/svCardSlot21"
+    />
+	<RelativeLayout
+		android:layout_width="160dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="333.5dp"
+        android:layout_marginLeft="217dp"
+        android:gravity="center">
+		<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="25dp"
+            android:layout_alignParentLeft="true"
+            android:textColor="@android:color/white"
+            android:background="@drawable/IconATK"
+            android:id="@+id/tvMonsterAT21"
+        />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="0"
+			android:textSize="25dp"
+			
+			android:layout_centerInParent="true"
+			android:textColor="@android:color/white"
+			android:background="@drawable/IconSPD"
+			android:id="@+id/tvMonsterSP21"
+        />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="0"
+			android:textSize="25dp"
+			
+			android:layout_alignParentRight="true"
+			android:textColor="@android:color/white"
+			android:background="@drawable/IconHP"
+			android:id="@+id/tvMonsterHP21"
+        />
+	</RelativeLayout>
+	
+
+
+    <Rumblebash.SlotView
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="380dp"
+        android:layout_marginLeft="220dp"
+        android:transformPivotX="72.5dp"
+        android:transformPivotY="72.5dp"
+        android:background="@drawable/SlotPortal"
+        android:id="@+id/svCardSlot22"
+    />
+	<RelativeLayout
+		android:layout_width="160dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="507.5dp"
+        android:layout_marginLeft="217dp"
+        android:gravity="center">
+		<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="25dp"
+            android:layout_alignParentLeft="true"
+            android:textColor="@android:color/white"
+            android:background="@drawable/IconATK"
+            android:id="@+id/tvMonsterAT22"
+        />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="0"
+			android:textSize="25dp"
+			
+			android:layout_centerInParent="true"
+			android:textColor="@android:color/white"
+			android:background="@drawable/IconSPD"
+			android:id="@+id/tvMonsterSP22"
+        />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="0"
+			android:textSize="25dp"
+			
+			android:layout_alignParentRight="true"
+			android:textColor="@android:color/white"
+			android:background="@drawable/IconHP"
+			android:id="@+id/tvMonsterHP22"
+        />
+	</RelativeLayout>
+
+
+    <Rumblebash.SlotView
+        android:layout_width="145dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="555dp"
+        android:layout_marginLeft="220dp"
+        android:background="@drawable/SlotPortal" 
+        android:id="@+id/svCardSlot23"
+    />
+	<RelativeLayout
+		android:layout_width="160dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="684.5dp"
+        android:layout_marginLeft="217dp"
+        android:gravity="center">
+		<TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="25dp"
+            android:layout_alignParentLeft="true"
+            android:textColor="@android:color/white"
+            android:background="@drawable/IconATK"
+            android:id="@+id/tvMonsterAT23"
+        />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="0"
+			android:textSize="25dp"
+			
+			android:layout_centerInParent="true"
+			android:textColor="@android:color/white"
+			android:background="@drawable/IconSPD"
+			android:id="@+id/tvMonsterSP23"
+        />
+
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="0"
+			android:textSize="25dp"
+			
+			android:layout_alignParentRight="true"
+			android:textColor="@android:color/white"
+			android:background="@drawable/IconHP"
+			android:id="@+id/tvMonsterHP23"
+        />
+	</RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+		android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:background="@drawable/KillsNTimeCount"
+        android:orientation="horizontal"
+        >
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Turns: 30"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentLeft="true"
+        android:textSize="18dp"
+		android:layout_marginTop="10dp"
+        android:id="@+id/tvCountDown"/>
+        <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kills: 0"
+		android:layout_alignParentRight="true"
+        android:textSize="18dp"
+		android:layout_marginRight="35dp"
+		android:layout_marginTop="10dp"
+        android:id="@+id/tvCountKills"/>
+    </RelativeLayout>
+
+	<ImageView
+        android:layout_width="57dp"
+        android:layout_height="57dp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/PlayButtonUnpressed"
+        android:id="@+id/ivPlayButton"
+    />
+    
+</RelativeLayout>

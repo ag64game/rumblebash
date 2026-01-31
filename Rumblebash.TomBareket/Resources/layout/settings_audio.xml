@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="290dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Music volume:"
+        android:textColor="@android:color/white"
+        android:id="@+id/tvMusicDisplay"
+        android:textSize="14dp"
+        android:layout_marginLeft="20dp"/>
+
+    <SeekBar
+        android:layout_width="290dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="20dp"
+        android:thumb="@drawable/IconHP"
+        android:id="@+id/sbMusicVolume"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sound Effect volume:"
+        android:textColor="@android:color/white"
+        android:textSize="14dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/tvSFXDisplay"/>
+
+    <SeekBar
+        android:layout_width="290dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="20dp"
+        android:thumb="@drawable/IconHP"
+        android:id="@+id/sbSFXVolume"/>
+	
+	
+	<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DISTANTEVILCOSMICLEGENDARY:"
+        android:textColor="@android:color/white"
+        android:textSize="14dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/tvDemonDisplay"/>
+
+    <SeekBar
+        android:layout_width="290dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="20dp"
+        android:thumb="@drawable/IconHP"
+        android:id="@+id/sbDemonVolume"/>
+ 
+</LinearLayout>

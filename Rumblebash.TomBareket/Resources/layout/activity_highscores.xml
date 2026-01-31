@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="390dp"
+    android:layout_height="530dp"
+    android:background="@android:color/black"
+    android:orientation="vertical"
+    >
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="530dp"
+        android:id="@+id/rvScoreboard"/>
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:id="@+id/ivCloseHighScores"
+        android:layout_marginLeft="320dp"
+        android:src="@drawable/CancelButtonUnpressed"/>
+
+</RelativeLayout>

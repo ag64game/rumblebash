@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="290dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play Idle Animations:"
+        android:textColor="@android:color/white"
+        android:id="@+id/tvIdleAnimsDisplay"
+         android:textSize="14dp"
+        android:layout_marginLeft="20dp"/>
+
+  <RadioGroup
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:layout_marginLeft="20dp"
+      android:id="@+id/rgPlayIdleAnims">
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        android:textSize="7dp"
+        android:textColor="@android:color/white"
+        android:id="@+id/rvIdleAnimYes"/>
+    <RadioButton
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        android:textSize="7dp"
+        android:textColor="@android:color/white"
+        android:id="@+id/rvIdleAnimNo"/>
+  </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enable Background scroll:"
+        android:textColor="@android:color/white"
+        android:textSize="14dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/tvBgScroll"/>
+
+  <RadioGroup
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginLeft="20dp"
+    android:id="@+id/rgKeepBgScroll">
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        android:textSize="7dp"
+        android:textColor="@android:color/white"
+        android:id="@+id/rvBgScrollYes"/>
+    <RadioButton
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        android:textSize="7dp"
+        android:textColor="@android:color/white"
+        android:id="@+id/rvBgScrollNo"/>
+  </RadioGroup>
+
+
+  <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play Starkill Animations:"
+        android:textColor="@android:color/white"
+        android:id="@+id/tvStarkillDisplay"
+         android:textSize="14dp"
+        android:layout_marginLeft="20dp"/>
+
+  <RadioGroup
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:layout_marginLeft="20dp"
+      android:id="@+id/rgPlayStarkill">
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Yes"
+        android:textSize="7dp"
+        android:textColor="@android:color/white"
+        android:id="@+id/rbPlayStarkillYes"/>
+    <RadioButton
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No"
+        android:textSize="7dp"
+        android:textColor="@android:color/white"
+        android:id="@+id/rbPlayStarkillNo"/>
+  </RadioGroup>
+</LinearLayout>

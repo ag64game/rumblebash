@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+	android:gravity="center"  
+    android:orientation="vertical"
+    android:padding="5dp"
+    android:background="@android:color/black">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Namer"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:textSize="11dp"
+        android:id="@+id/tvStatsDisplayName"
+    />
+
+    <TextView
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:text="This monster does"
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:textSize="5dp"
+        android:id="@+id/tvStatsDisplayAbility"
+    />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Charge: "
+        android:textColor="@android:color/white"
+        android:gravity="center"
+        android:textSize="4dp"
+        android:id="@+id/tvStatsDisplayCharge"
+    />
+</LinearLayout>
