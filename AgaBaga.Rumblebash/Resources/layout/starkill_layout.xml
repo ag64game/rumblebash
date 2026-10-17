@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/bigkillseffect">
+   
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="260dp"
+      android:id="@+id/tvStarkillText"
+      android:layout_marginLeft="45dp"
+      android:layout_marginTop="325dp"
+      android:textSize="90dp"
+      android:text="You dirty landlubbing slimy mother of the motheriest of mothering of the motherfuckers COWARD"/>
+     
+	<ImageView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+    android:background="@drawable/stareffect"
+    android:id="@+id/ivStars"/>
+</RelativeLayout>

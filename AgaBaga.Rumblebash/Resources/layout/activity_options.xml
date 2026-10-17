@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+  
+  <LinearLayout
+    android:layout_width="350dp"
+    android:layout_height="455dp"
+    android:background="@drawable/cardbackground"
+    android:orientation="vertical"
+    android:layout_centerInParent="true">
+
+    <RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content">
+
+      <ImageView
+          android:layout_width="70dp"
+          android:layout_height="70dp"
+          android:id="@+id/ivCloseSettings"
+          android:layout_alignParentRight="true"
+          android:src="@drawable/CancelButtonUnpressed"/>
+
+      <TextView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:text="Settings"
+          android:layout_centerInParent="true"
+          android:gravity="center"
+          android:textSize="36dp"
+          android:textColor="@android:color/white"
+          android:id="@+id/tvOptionsTitle"/>
+
+      <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/ivSaveButton"
+        android:src="@drawable/SaveButtonUnpressed"/>
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_marginTop="-32dp"
+        android:src="@drawable/MusicSettings"
+        android:id="@+id/ivSettingsPortrait"/>
+
+    <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/vDisplayedSettings"/>
+
+  </LinearLayout>
+  
+
+  <ImageView
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:layout_marginTop="350dp"
+    android:background="@drawable/SettingsArrowRight"
+    android:layout_alignParentRight="true"
+    android:id="@+id/ivSettingsRightButton"/>
+  
+  <ImageView
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:layout_marginTop="350dp"
+    android:background="@drawable/SettingsArrowLeft"
+    android:layout_alignParentLeft="true"
+    android:id="@+id/ivSettingsLeftButton"/>
+ 
+</RelativeLayout>

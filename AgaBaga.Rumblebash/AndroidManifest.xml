@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="aga.baga.rumblebash" android:versionCode="1" android:versionName="0.3 Migration Build">
+	<application android:allowBackup="true" android:icon="@drawable/slotportal" android:label="Rumblebash" android:supportsRtl="true"></application>
+	<uses-permission android:name="android.permission.INTERNET" />
+</manifest>
